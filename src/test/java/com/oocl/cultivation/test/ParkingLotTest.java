@@ -33,7 +33,7 @@ public class ParkingLotTest {
         CarTicket carTicket = parkingLot.park(car);
 
         //when
-        Car fetchedCar = parkingLot.fetch(car);
+        Car fetchedCar = parkingLot.fetch(carTicket);
 
         //then
         assertNotNull(car);
