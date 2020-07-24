@@ -60,7 +60,7 @@ public class ParkingBoyTest {
         //given
         ParkingBoy parkingBoy = new ParkingBoy();
         Car car = new Car();
-        CarTicket carTicket = parkingBoy.parkCar(car);
+        parkingBoy.parkCar(car);
         CarTicket wrongTicket = new CarTicket();
 
         //when
@@ -75,7 +75,7 @@ public class ParkingBoyTest {
         //given
         ParkingBoy parkingBoy = new ParkingBoy();
         Car car = new Car();
-        CarTicket carTicket = parkingBoy.parkCar(car);
+        parkingBoy.parkCar(car);
         CarTicket wrongTicket = null;
 
         //when
