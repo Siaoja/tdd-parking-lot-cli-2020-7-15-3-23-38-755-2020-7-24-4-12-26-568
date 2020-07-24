@@ -40,21 +40,4 @@ public class ParkingLotTest {
         assertEquals(car,fetchedCar);
 
     }
-
-    @Test
-    void should_given_cars_when_park_cars_then_return_ticket() {
-        //given
-        ParkingLot parkingBoy = new ParkingLot();
-
-        for(int i = 0; i < 10; i++){
-            //given
-            Car car = new Car();
-
-            //when
-            CarTicket carTicket = parkingBoy.park(car);
-
-            //then
-            assertNotNull(carTicket);
-        }
-    }
 }
