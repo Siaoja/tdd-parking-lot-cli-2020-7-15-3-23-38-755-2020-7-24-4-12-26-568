@@ -16,9 +16,13 @@ public class ParkingLot {
         return carTicket;
     }
 
-    public Car fetch(CarTicket ticket) {
-        Car car = ticketCarMap.get(ticket);
-        ticketCarMap.remove(ticket);
-        return car;
+    public Car fetch(CarTicket carTicket) {
+        return ticketCarMap.remove(carTicket);
+    }
+
+    public boolean isRightTicket(CarTicket carTicket){
+        if(ticketCarMap.get(carTicket) == null)
+            return false;
+        return true;
     }
 }

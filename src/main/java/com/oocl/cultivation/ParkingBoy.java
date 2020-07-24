@@ -10,7 +10,10 @@ public class ParkingBoy {
         return parkingLot.park(car);
     }
 
-    public Car fetchCar(CarTicket ticket) {
-        return parkingLot.fetch(ticket);
+    public Car fetchCar(CarTicket carTicket) {
+        if(parkingLot.isRightTicket(carTicket))
+            return parkingLot.fetch(carTicket);
+        else
+            return null;
     }
 }
