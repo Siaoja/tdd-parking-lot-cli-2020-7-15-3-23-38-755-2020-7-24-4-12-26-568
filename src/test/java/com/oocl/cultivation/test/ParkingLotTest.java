@@ -6,6 +6,9 @@ import com.oocl.cultivation.ParkingLot;
 import org.junit.jupiter.api.Test;
 import sun.security.krb5.internal.Ticket;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
@@ -37,7 +40,34 @@ public class ParkingLotTest {
 
         //then
         assertNotNull(car);
-        assertEquals(car,fetchedCar);
+        assertEquals(car, fetchedCar);
+
+    }
+
+    @Test
+    void should_given_11_cars_when_call_park_then_return_10_tickets() {
+        //give
+        List<Car> carList = new ArrayList<>();
+        for (int i = 0; i < 11; i++) {
+            carList.add(new Car());
+        }
+
+        //when
+        ParkingLot parkingLot = new ParkingLot();
+        List<CarTicket> carTicketList = new ArrayList<>();
+        for (int i = 0; i < 11; i++) {
+            carTicketList.add(parkingLot.park(carList.get(i)));
+        }
+
+
+        //then
+        for (int i = 0; i < 11; i++) {
+            if (i != 10)
+                assertNotNull(carTicketList.get(i));
+            else {
+                assertNull(carTicketList.get(i));
+            }
+        }
 
     }
 }

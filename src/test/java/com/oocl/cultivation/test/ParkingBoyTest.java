@@ -18,7 +18,7 @@ public class ParkingBoyTest {
         //given
         ParkingBoy parkingBoy = new ParkingBoy();
 
-        for(int i = 0; i < 10; i++){
+        for (int i = 0; i < 10; i++) {
             //given
             Car car = new Car();
 
@@ -37,21 +37,21 @@ public class ParkingBoyTest {
         List<Car> carList = new ArrayList<>();
         List<CarTicket> carTicketList = new ArrayList<>();
         List<Car> fetchedCarList = new ArrayList<>();
-        for(int i = 0; i < 10; i++){
+        for (int i = 0; i < 10; i++) {
             //given
             carList.add(new Car());
             carTicketList.add(parkingBoy.parkCar(carList.get(i)));
         }
 
         //when
-        for(int i = 0; i < 10; i++){
+        for (int i = 0; i < 10; i++) {
             fetchedCarList.add(parkingBoy.fetchCar(carTicketList.get(i)));
         }
 
         //then
-        for(int i = 0; i < 10; i++){
+        for (int i = 0; i < 10; i++) {
             assertNotNull(fetchedCarList.get(i));
-            assertEquals(carList.get(i),fetchedCarList.get(i));
+            assertEquals(carList.get(i), fetchedCarList.get(i));
         }
     }
 
@@ -99,4 +99,6 @@ public class ParkingBoyTest {
         //then
         assertNull(fetchedCar);
     }
+
+
 }
