@@ -2,6 +2,7 @@ package com.oocl.cultivation.test;
 
 import com.oocl.cultivation.Car;
 import com.oocl.cultivation.CarTicket;
+import com.oocl.cultivation.FetchCarInfo;
 import com.oocl.cultivation.ParkingBoy;
 import org.junit.jupiter.api.Test;
 
@@ -109,8 +110,9 @@ public class ParkingBoyTest {
         CarTicket wrongTicket = new CarTicket();
 
         //when
-        Car fetchedCar = parkingBoy.fetchCar(wrongTicket).getCar();
-        String message = parkingBoy.queryTicket(wrongTicket);
+        FetchCarInfo fetchCarInfo = parkingBoy.fetchCar(wrongTicket);
+        Car fetchedCar = fetchCarInfo.getCar();
+        String message = fetchCarInfo.getTicketMessage();
 
         //then
         assertNull(fetchedCar);
@@ -126,8 +128,9 @@ public class ParkingBoyTest {
         parkingBoy.fetchCar(carTicket);
 
         //when
-        Car fetchedCar = parkingBoy.fetchCar(carTicket).getCar();
-        String message = parkingBoy.queryTicket(carTicket);
+        FetchCarInfo fetchCarInfo = parkingBoy.fetchCar(carTicket);
+        Car fetchedCar = fetchCarInfo.getCar();
+        String message = fetchCarInfo.getTicketMessage();
 
         //then
         assertNull(fetchedCar);
@@ -142,8 +145,9 @@ public class ParkingBoyTest {
         parkingBoy.parkCar(car);
 
         //when
-        Car fetchedCar = parkingBoy.fetchCar(null).getCar();
-        String message = parkingBoy.queryTicket(null);
+        FetchCarInfo fetchCarInfo = parkingBoy.fetchCar(null);
+        Car fetchedCar = fetchCarInfo.getCar();
+        String message = fetchCarInfo.getTicketMessage();
 
         //then
         assertNull(fetchedCar);

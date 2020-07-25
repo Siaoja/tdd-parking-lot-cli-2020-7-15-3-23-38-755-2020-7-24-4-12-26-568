@@ -21,7 +21,7 @@ public class ParkingBoy {
         return fetchCarInfo;
     }
 
-    public String queryTicket(CarTicket carTicke) {
+    private String queryTicket(CarTicket carTicke) {
         String ticketMessage = "";
         if (carTicke == null) {
             ticketMessage = "Please provide your parking ticket.";
