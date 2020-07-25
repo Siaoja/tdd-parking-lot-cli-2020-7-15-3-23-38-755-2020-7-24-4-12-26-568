@@ -11,18 +11,23 @@ public class ParkingBoy {
         return parkingLot.park(car);
     }
 
-    public Car fetchCar(CarTicket carTicket) {
-        if (parkingLot.isRightTicket(carTicket))
-            return parkingLot.fetch(carTicket);
-        else
-            return null;
+    public FetchCarInfo fetchCar(CarTicket carTicket) {
+        Car car = parkingLot.fetch(carTicket);
+        String tickeMessage = "";
+        if (car == null) {
+            tickeMessage = queryTicket(carTicket);
+        }
+        FetchCarInfo fetchCarInfo = new FetchCarInfo(car, tickeMessage);
+        return fetchCarInfo;
     }
 
-    public String queryTicket(CarTicket carTicketicket) {
-        if(carTicketicket == null){
-            return "Please provide your parking ticket.";
-        }else{
-            return "Unrecognized parking ticket.";
+    public String queryTicket(CarTicket carTicke) {
+        String ticketMessage = "";
+        if (carTicke == null) {
+            ticketMessage = "Please provide your parking ticket.";
+        } else if (!parkingLot.isRightTicket(carTicke)) {
+            ticketMessage = "Unrecognized parking ticket.";
         }
+        return ticketMessage;
     }
 }

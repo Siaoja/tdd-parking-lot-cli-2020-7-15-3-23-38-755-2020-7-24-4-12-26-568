@@ -44,7 +44,7 @@ public class ParkingBoyTest {
 
         //when
         for (int i = 0; i < 10; i++) {
-            fetchedCarList.add(parkingBoy.fetchCar(carTicketList.get(i)));
+            fetchedCarList.add(parkingBoy.fetchCar(carTicketList.get(i)).getCar());
         }
 
         //then
@@ -63,7 +63,7 @@ public class ParkingBoyTest {
         CarTicket wrongTicket = new CarTicket();
 
         //when
-        Car fetchedCar = parkingBoy.fetchCar(wrongTicket);
+        Car fetchedCar = parkingBoy.fetchCar(wrongTicket).getCar();
 
         //then
         assertNull(fetchedCar);
@@ -78,7 +78,7 @@ public class ParkingBoyTest {
         CarTicket wrongTicket = null;
 
         //when
-        Car fetchedCar = parkingBoy.fetchCar(wrongTicket);
+        Car fetchedCar = parkingBoy.fetchCar(wrongTicket).getCar();
 
         //then
         assertNull(fetchedCar);
@@ -93,7 +93,7 @@ public class ParkingBoyTest {
         parkingBoy.fetchCar(carTicket);
 
         //when
-        Car fetchedCar = parkingBoy.fetchCar(carTicket);
+        Car fetchedCar = parkingBoy.fetchCar(carTicket).getCar();
 
         //then
         assertNull(fetchedCar);
@@ -109,7 +109,7 @@ public class ParkingBoyTest {
         CarTicket wrongTicket = new CarTicket();
 
         //when
-        Car fetchedCar = parkingBoy.fetchCar(wrongTicket);
+        Car fetchedCar = parkingBoy.fetchCar(wrongTicket).getCar();
         String message = parkingBoy.queryTicket(wrongTicket);
 
         //then
@@ -126,7 +126,7 @@ public class ParkingBoyTest {
         parkingBoy.fetchCar(carTicket);
 
         //when
-        Car fetchedCar = parkingBoy.fetchCar(carTicket);
+        Car fetchedCar = parkingBoy.fetchCar(carTicket).getCar();
         String message = parkingBoy.queryTicket(carTicket);
 
         //then
@@ -142,7 +142,7 @@ public class ParkingBoyTest {
         parkingBoy.parkCar(car);
 
         //when
-        Car fetchedCar = parkingBoy.fetchCar(null);
+        Car fetchedCar = parkingBoy.fetchCar(null).getCar();
         String message = parkingBoy.queryTicket(null);
 
         //then
