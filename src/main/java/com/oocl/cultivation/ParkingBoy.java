@@ -17,4 +17,8 @@ public class ParkingBoy {
         else
             return null;
     }
+
+    public String queryTicket(CarTicket wrongTicket) {
+        return null;
+    }
 }
