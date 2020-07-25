@@ -18,7 +18,11 @@ public class ParkingBoy {
             return null;
     }
 
-    public String queryTicket(CarTicket wrongTicket) {
-        return "Unrecognized parking ticket.";
+    public String queryTicket(CarTicket carTicketicket) {
+        if(carTicketicket == null){
+            return "Please provide your parking ticket.";
+        }else{
+            return "Unrecognized parking ticket.";
+        }
     }
 }
