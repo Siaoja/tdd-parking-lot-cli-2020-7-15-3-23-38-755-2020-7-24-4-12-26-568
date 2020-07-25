@@ -8,7 +8,10 @@ public class ParkingBoy {
     }
 
     public ParkCarInfo parkCar(Car car) {
-        return new ParkCarInfo(parkingLot.park(car),null);
+        ParkCarInfo parkCarInfo = null;
+        CarTicket carTicket = parkingLot.park(car);
+        parkCarInfo = new ParkCarInfo(carTicket, (carTicket == null ? "Not enough position.": null));
+        return parkCarInfo;
     }
 
     public FetchCarInfo fetchCar(CarTicket carTicket) {
