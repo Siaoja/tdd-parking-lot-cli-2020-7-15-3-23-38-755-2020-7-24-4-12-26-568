@@ -118,7 +118,7 @@ public class ParkingBoyTest {
     }
 
     @Test
-    void should_given_used_ticket_when_fetch_cars_then_return_correspond_message() {
+    void should_given_used_ticket_when_fetch_car_then_return_correspond_message() {
         //given
         ParkingBoy parkingBoy = new ParkingBoy();
         Car car = new Car();
@@ -132,5 +132,21 @@ public class ParkingBoyTest {
         //then
         assertNull(fetchedCar);
         assertEquals("Unrecognized parking ticket.",message);
+    }
+
+    @Test
+    void should_given_no_ticket_when_fetch_car_then_return_correspond_message() {
+        //given
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Car car = new Car();
+        parkingBoy.parkCar(car);
+
+        //when
+        Car fetchedCar = parkingBoy.fetchCar(null);
+        String message = parkingBoy.queryTicket(null);
+
+        //then
+        assertNull(fetchedCar);
+        assertEquals("Please provide your parking ticket.",message);
     }
 }
