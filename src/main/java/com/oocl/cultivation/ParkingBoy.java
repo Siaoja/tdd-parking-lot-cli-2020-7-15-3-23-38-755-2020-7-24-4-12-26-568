@@ -7,8 +7,8 @@ public class ParkingBoy {
         parkingLot = new ParkingLot();
     }
 
-    public CarTicket parkCar(Car car) {
-        return parkingLot.park(car);
+    public ParkCarInfo parkCar(Car car) {
+        return new ParkCarInfo(parkingLot.park(car),null);
     }
 
     public FetchCarInfo fetchCar(CarTicket carTicket) {

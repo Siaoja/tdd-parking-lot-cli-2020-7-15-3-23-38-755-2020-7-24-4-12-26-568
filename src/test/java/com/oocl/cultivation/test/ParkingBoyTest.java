@@ -1,9 +1,6 @@
 package com.oocl.cultivation.test;
 
-import com.oocl.cultivation.Car;
-import com.oocl.cultivation.CarTicket;
-import com.oocl.cultivation.FetchCarInfo;
-import com.oocl.cultivation.ParkingBoy;
+import com.oocl.cultivation.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -23,7 +20,7 @@ public class ParkingBoyTest {
             Car car = new Car();
 
             //when
-            CarTicket carTicket = parkingBoy.parkCar(car);
+            CarTicket carTicket = parkingBoy.parkCar(car).getCarTicket();
 
             //then
             assertNotNull(carTicket);
@@ -40,7 +37,7 @@ public class ParkingBoyTest {
         for (int i = 0; i < 10; i++) {
             //given
             carList.add(new Car());
-            carTicketList.add(parkingBoy.parkCar(carList.get(i)));
+            carTicketList.add(parkingBoy.parkCar(carList.get(i)).getCarTicket());
         }
 
         //when
@@ -90,7 +87,7 @@ public class ParkingBoyTest {
         //given
         ParkingBoy parkingBoy = new ParkingBoy();
         Car car = new Car();
-        CarTicket carTicket = parkingBoy.parkCar(car);
+        CarTicket carTicket = parkingBoy.parkCar(car).getCarTicket();
         parkingBoy.fetchCar(carTicket);
 
         //when
@@ -124,7 +121,7 @@ public class ParkingBoyTest {
         //given
         ParkingBoy parkingBoy = new ParkingBoy();
         Car car = new Car();
-        CarTicket carTicket = parkingBoy.parkCar(car);
+        CarTicket carTicket = parkingBoy.parkCar(car).getCarTicket();
         parkingBoy.fetchCar(carTicket);
 
         //when
@@ -152,5 +149,26 @@ public class ParkingBoyTest {
         //then
         assertNull(fetchedCar);
         assertEquals("Please provide your parking ticket.",message);
+    }
+
+    @Test
+    void should_given_11_cars_when_park_car_then_return_correspond_message(){
+        //give
+        List<Car> carList = new ArrayList<>();
+        for (int i = 0; i < 11; i++) {
+            carList.add(new Car());
+        }
+
+        //when
+        List<ParkCarInfo> parkCarInfo = new ArrayList<>();
+        ParkingBoy parkingBoy = new ParkingBoy();
+        for (int i = 0; i < 11; i++) {
+            parkCarInfo.add(parkingBoy.parkCar(carList.get(i)));
+        }
+
+
+        //then
+        assertNull(parkCarInfo.get(10).getCarTicket());
+        assertEquals("Not enough position.",parkCarInfo.get(10).getParkMessage());
     }
 }
