@@ -4,18 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
-    private int maxCapacity;
     Map<CarTicket, Car> ticketCarMap;
+    private final int maxCapacity;
 
-    public ParkingLot(){
+    public ParkingLot() {
         ticketCarMap = new HashMap<>();
         maxCapacity = 10;
     }
 
     public CarTicket park(Car car) {
-        if(ticketCarMap.size() < maxCapacity){
+        if (ticketCarMap.size() < maxCapacity) {
             CarTicket carTicket = new CarTicket();
-            ticketCarMap.put(carTicket,car);
+            ticketCarMap.put(carTicket, car);
             return carTicket;
         }
         return null;
@@ -25,9 +25,7 @@ public class ParkingLot {
         return ticketCarMap.remove(carTicket);
     }
 
-    public boolean isRightTicket(CarTicket carTicket){
-        if(ticketCarMap.get(carTicket) == null)
-            return false;
-        return true;
+    public boolean isRightTicket(CarTicket carTicket) {
+        return ticketCarMap.get(carTicket) != null;
     }
 }

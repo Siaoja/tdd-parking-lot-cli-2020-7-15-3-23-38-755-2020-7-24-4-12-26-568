@@ -4,7 +4,6 @@ import com.oocl.cultivation.Car;
 import com.oocl.cultivation.CarTicket;
 import com.oocl.cultivation.ParkingLot;
 import org.junit.jupiter.api.Test;
-import sun.security.krb5.internal.Ticket;
 
 import java.util.ArrayList;
 import java.util.List;
