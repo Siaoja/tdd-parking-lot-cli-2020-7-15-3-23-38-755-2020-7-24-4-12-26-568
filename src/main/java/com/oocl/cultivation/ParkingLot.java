@@ -11,6 +11,10 @@ public class ParkingLot {
         ticketCarMap = new HashMap<>();
         maxCapacity = 10;
     }
+    public ParkingLot(int maxCapacity) {
+        ticketCarMap = new HashMap<>();
+        this.maxCapacity = maxCapacity;
+    }
 
     public CarTicket park(Car car) {
         if (ticketCarMap.size() < maxCapacity) {
