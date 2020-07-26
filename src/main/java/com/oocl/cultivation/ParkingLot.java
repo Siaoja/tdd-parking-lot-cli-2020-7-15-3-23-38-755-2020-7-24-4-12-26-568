@@ -32,4 +32,8 @@ public class ParkingLot {
     public Map<CarTicket, Car> getTicketCarMap() {
         return ticketCarMap;
     }
+
+    public int getMaxCapacity() {
+        return maxCapacity;
+    }
 }

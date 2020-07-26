@@ -3,30 +3,40 @@ package com.oocl.cultivation;
 import java.util.List;
 
 public class ParkingBoy {
-    ParkingLot parkingLot;
     List<ParkingLot> parkingLots;
 
-    public ParkingBoy() {
-        parkingLot = new ParkingLot();
-    }
-
     public ParkingBoy(List<ParkingLot> parkingLots) {
+        this.parkingLots = parkingLots;
     }
 
     public ParkCarInfo parkCar(Car car) {
         ParkCarInfo parkCarInfo;
-        CarTicket carTicket = parkingLot.park(car);
-        parkCarInfo = new ParkCarInfo(carTicket, (carTicket == null ? "Not enough position.": null));
+        CarTicket carTicket = null;
+        for (ParkingLot parkingLot : parkingLots) {
+            if (parkingLot.getTicketCarMap().size() < parkingLot.getMaxCapacity()) {
+                carTicket = parkingLot.park(car);
+                break;
+            }
+        }
+
+        parkCarInfo = new ParkCarInfo(carTicket, (carTicket == null ? "Not enough position." : null));
         return parkCarInfo;
     }
 
     public FetchCarInfo fetchCar(CarTicket carTicket) {
-        Car car = parkingLot.fetch(carTicket);
-        String tickeMessage = "";
+        FetchCarInfo fetchCarInfo;
+        Car car = null;
+        String tickeMessage = null;
+        for (ParkingLot parkingLot : parkingLots) {
+            Car temp = parkingLot.fetch(carTicket);
+            if (temp != null) {
+                car = temp;
+            }
+        }
         if (car == null) {
             tickeMessage = queryTicket(carTicket);
         }
-        FetchCarInfo fetchCarInfo = new FetchCarInfo(car, tickeMessage);
+        fetchCarInfo = new FetchCarInfo(car, tickeMessage);
         return fetchCarInfo;
     }
 
@@ -34,8 +44,14 @@ public class ParkingBoy {
         String ticketMessage = "";
         if (carTicke == null) {
             ticketMessage = "Please provide your parking ticket.";
-        } else if (!parkingLot.isRightTicket(carTicke)) {
-            ticketMessage = "Unrecognized parking ticket.";
+        } else {
+            for (ParkingLot parkingLot : parkingLots) {
+                if (parkingLot.isRightTicket(carTicke)) {
+                    ticketMessage = "";
+                    break;
+                }
+                ticketMessage = "Unrecognized parking ticket.";
+            }
         }
         return ticketMessage;
     }
