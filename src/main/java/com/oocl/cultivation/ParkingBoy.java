@@ -1,14 +1,20 @@
 package com.oocl.cultivation;
 
+import java.util.List;
+
 public class ParkingBoy {
     ParkingLot parkingLot;
+    List<ParkingLot> parkingLots;
 
     public ParkingBoy() {
         parkingLot = new ParkingLot();
     }
 
+    public ParkingBoy(List<ParkingLot> parkingLots) {
+    }
+
     public ParkCarInfo parkCar(Car car) {
-        ParkCarInfo parkCarInfo = null;
+        ParkCarInfo parkCarInfo;
         CarTicket carTicket = parkingLot.park(car);
         parkCarInfo = new ParkCarInfo(carTicket, (carTicket == null ? "Not enough position.": null));
         return parkCarInfo;
@@ -32,5 +38,9 @@ public class ParkingBoy {
             ticketMessage = "Unrecognized parking ticket.";
         }
         return ticketMessage;
+    }
+
+    public List<ParkingLot> getParkingLots() {
+        return null;
     }
 }

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
-    Map<CarTicket, Car> ticketCarMap;
+    private final Map<CarTicket, Car> ticketCarMap;
     private final int maxCapacity;
 
     public ParkingLot() {
@@ -27,5 +27,9 @@ public class ParkingLot {
 
     public boolean isRightTicket(CarTicket carTicket) {
         return ticketCarMap.get(carTicket) != null;
+    }
+
+    public Map<CarTicket, Car> getTicketCarMap() {
+        return ticketCarMap;
     }
 }
