@@ -57,6 +57,6 @@ public class ParkingBoy {
     }
 
     public List<ParkingLot> getParkingLots() {
-        return null;
+        return parkingLots;
     }
 }

@@ -182,21 +182,21 @@ public class ParkingBoyTest {
         assertEquals("Not enough position.",parkCarInfo.get(10).getParkMessage());
     }
 
-//    @Test
-//    void should_given_many_cars_when_park_then_return_many_tickets() {
-//        //given
-//        List<ParkingLot> parkingLots = new ArrayList<>();
-//        parkingLots.add(new ParkingLot());
-//        parkingLots.add(new ParkingLot());
-//        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
-//
-//        //when
-//        for(int i = 0; i < 11; i++){
-//            parkingBoy.parkCar(new Car());
-//        }
-//
-//        //then
-//        assertEquals(10,parkingBoy.getParkingLots().get(1).getTicketCarMap().size());
-//        assertEquals(1,parkingBoy.getParkingLots().get(1).getTicketCarMap().size());
-//    }
+    @Test
+    void should_given_many_cars_when_park_then_return_many_tickets() {
+        //given
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(new ParkingLot());
+        parkingLots.add(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+
+        //when
+        for(int i = 0; i < 11; i++){
+            parkingBoy.parkCar(new Car());
+        }
+
+        //then
+        assertEquals(10,parkingBoy.getParkingLots().get(0).getTicketCarMap().size());
+        assertEquals(1,parkingBoy.getParkingLots().get(1).getTicketCarMap().size());
+    }
 }
