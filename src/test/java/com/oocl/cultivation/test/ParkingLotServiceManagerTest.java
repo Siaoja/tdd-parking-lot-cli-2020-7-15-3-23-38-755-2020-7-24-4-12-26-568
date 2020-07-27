@@ -64,7 +64,7 @@ public class ParkingLotServiceManagerTest {
         for(int i = 0; i < 3; i++){
             parkingLots.add(new ParkingLot());
         }
-        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLots);
         Car car = new Car();
 
         //when

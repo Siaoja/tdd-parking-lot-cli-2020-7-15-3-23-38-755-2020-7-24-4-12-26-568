@@ -14,7 +14,7 @@ public class ParkingLotServiceManager {
     public ParkingLotServiceManager() {
         managerList = new ArrayList<>();
     }
-    public ParkingLotServiceManager(ArrayList<ParkingLot> parkingLots) {
+    public ParkingLotServiceManager(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
     }
 
@@ -36,10 +36,30 @@ public class ParkingLotServiceManager {
     }
 
     public ParkCarInfo parkCar(Car car) {
-        return null;
+        ParkCarInfo parkCarInfo;
+        CarTicket carTicket = null;
+        for (ParkingLot parkingLot : parkingLots) {
+            if (parkingLot.getTicketCarMap().size() < parkingLot.getMaxCapacity()) {
+                carTicket = parkingLot.park(car);
+                break;
+            }
+        }
+
+        parkCarInfo = new ParkCarInfo(carTicket, (carTicket == null ? "Not enough position." : null));
+        return parkCarInfo;
     }
 
     public FetchCarInfo fetchCar(CarTicket carTicket) {
-        return null;
+        FetchCarInfo fetchCarInfo;
+        Car car = null;
+        String tickeMessage = null;
+        for (ParkingLot parkingLot : parkingLots) {
+            Car temp = parkingLot.fetch(carTicket);
+            if (temp != null) {
+                car = temp;
+            }
+        }
+        fetchCarInfo = new FetchCarInfo(car, tickeMessage);
+        return fetchCarInfo;
     }
 }
