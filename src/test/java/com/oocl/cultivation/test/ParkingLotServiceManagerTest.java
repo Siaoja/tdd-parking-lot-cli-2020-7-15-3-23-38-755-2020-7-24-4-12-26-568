@@ -69,10 +69,8 @@ public class ParkingLotServiceManagerTest {
 
         //when
         ParkCarInfo parkCarInfo = parkingLotServiceManager.parkCar(car);
-        FetchCarInfo fetchCarInfo = parkingLotServiceManager.fetchCar(parkCarInfo.getCarTicket());
 
         //then
         assertNotNull(parkCarInfo.getCarTicket());
-        assertEquals(car, fetchCarInfo.getCar());
     }
 }
