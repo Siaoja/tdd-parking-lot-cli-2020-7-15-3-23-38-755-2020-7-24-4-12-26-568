@@ -13,7 +13,7 @@ public class ParkingBoy {
         ParkCarInfo parkCarInfo;
         CarTicket carTicket = null;
         for (ParkingLot parkingLot : parkingLots) {
-            if (parkingLot.getTicketCarMap().size() < parkingLot.getMaxCapacity()) {
+            if (!parkingLot.isFull()) {
                 carTicket = parkingLot.park(car);
                 break;
             }
