@@ -1,4 +1,4 @@
-package com.oocl.cultivation.test;
+package com.oocl.cultivation;
 
 import com.oocl.cultivation.Car;
 import com.oocl.cultivation.ParkCarInfo;
@@ -22,8 +22,9 @@ public class ParkingLotServiceManager {
         return managerList.size();
     }
 
-    public ParkCarInfo arrangePark(int parkingBoyIndex, Car car1) {
-        return null;
+    public ParkCarInfo arrangePark(int parkingBoyIndex, Car car) {
+        ParkingBoy parkingBoy = managerList.get(parkingBoyIndex);
+        return parkingBoy.parkCar(car);
     }
 
     public List<ParkingBoy> getManagerList() {
