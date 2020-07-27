@@ -28,9 +28,9 @@ public class ParkingBoy {
         Car car = null;
         String tickeMessage = null;
         for (ParkingLot parkingLot : parkingLots) {
-            Car temp = parkingLot.fetch(carTicket);
-            if (temp != null) {
-                car = temp;
+            Car fetchCar = parkingLot.fetch(carTicket);
+            if (fetchCar != null) {
+                car = fetchCar;
             }
         }
         if (car == null) {
