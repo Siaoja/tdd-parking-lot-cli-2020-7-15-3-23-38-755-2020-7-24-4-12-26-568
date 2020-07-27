@@ -49,4 +49,7 @@ public class ParkingLot {
         return maxCapacity - ticketCarMap.size();
     }
 
+    public double calculateAvaliableRate(){
+        return 1.0 - (double)ticketCarMap.size()/(double)maxCapacity;
+    }
 }
