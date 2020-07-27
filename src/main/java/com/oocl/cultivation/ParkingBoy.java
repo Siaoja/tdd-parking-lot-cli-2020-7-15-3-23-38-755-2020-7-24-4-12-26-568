@@ -28,7 +28,7 @@ public class ParkingBoy {
         Car car = null;
         String ticketMessage = null;
         if(carTicket == null){
-            ticketMessage = "Please provide your parking ticket.";
+            ticketMessage = ParkingLotInfoConstant.PARKINGLOT_GIVE_NO_TICKET_WHEN_FETCH_TIPS.constantValue;
         }else{
             for (ParkingLot parkingLot : parkingLots) {
                 Car fetchCar = parkingLot.fetch(carTicket);
