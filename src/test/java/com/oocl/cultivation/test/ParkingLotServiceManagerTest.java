@@ -11,7 +11,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ParkingLotServiceManagerTest {
-    //TODO implement arrangeManager and through the test
     @Test
     void should_given_2_parkingBoy_when_arrange_manager_then_return_manager_list_size_2() {
         //given
