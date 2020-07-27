@@ -26,7 +26,8 @@ public class ParkingBoy {
     public FetchCarInfo fetchCar(CarTicket carTicket) {
         FetchCarInfo fetchCarInfo;
         Car car = null;
-        String tickeMessage = null;
+        String ticketMessage = null;
+
         for (ParkingLot parkingLot : parkingLots) {
             Car fetchCar = parkingLot.fetch(carTicket);
             if (fetchCar != null) {
@@ -34,19 +35,19 @@ public class ParkingBoy {
             }
         }
         if (car == null) {
-            tickeMessage = queryTicket(carTicket);
+            ticketMessage = queryTicket(carTicket);
         }
-        fetchCarInfo = new FetchCarInfo(car, tickeMessage);
+        fetchCarInfo = new FetchCarInfo(car, ticketMessage);
         return fetchCarInfo;
     }
 
-    private String queryTicket(CarTicket carTicke) {
+    private String queryTicket(CarTicket carTicket) {
         String ticketMessage = null;
-        if (carTicke == null) {
+        if(carTicket == null){
             ticketMessage = "Please provide your parking ticket.";
-        } else {
+        }else {
             for (ParkingLot parkingLot : parkingLots) {
-                if (parkingLot.isRightTicket(carTicke)) {
+                if (parkingLot.isRightTicket(carTicket)) {
                     ticketMessage = "";
                     break;
                 }
