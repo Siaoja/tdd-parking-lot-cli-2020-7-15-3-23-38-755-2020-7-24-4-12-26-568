@@ -46,4 +46,7 @@ public class ParkingLotServiceManager {
         return parkCarInfo;
     }
 
+    public FetchCarInfo fetchCar(CarTicket carTicket) {
+        return null;
+    }
 }
