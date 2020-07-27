@@ -13,7 +13,8 @@ public class ParkingLotServiceManager {
         managerList = new ArrayList<>();
     }
 
-    public void arrangeManager(ParkingBoy parkingBoya) {
+    public void arrangeManager(ParkingBoy parkingBoy) {
+        managerList.add(parkingBoy);
     }
 
     public int getManagerListSize() {
