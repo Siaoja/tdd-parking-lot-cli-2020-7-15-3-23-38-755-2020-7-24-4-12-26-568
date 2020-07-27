@@ -19,7 +19,7 @@ public class ParkingBoy {
             }
         }
 
-        parkCarInfo = new ParkCarInfo(carTicket, (carTicket == null ? "Not enough position." : null));
+        parkCarInfo = new ParkCarInfo(carTicket, (carTicket == null ? ParkingLotInfoConstant.PARKINGLOT_CAPACITY_FULL_TIPS.constantValue : null));
         return parkCarInfo;
     }
 
