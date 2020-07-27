@@ -1,9 +1,5 @@
 package com.oocl.cultivation;
 
-import com.oocl.cultivation.Car;
-import com.oocl.cultivation.ParkCarInfo;
-import com.oocl.cultivation.ParkingBoy;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +10,7 @@ public class ParkingLotServiceManager {
     public ParkingLotServiceManager() {
         managerList = new ArrayList<>();
     }
+
     public ParkingLotServiceManager(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
     }
@@ -49,17 +46,4 @@ public class ParkingLotServiceManager {
         return parkCarInfo;
     }
 
-    public FetchCarInfo fetchCar(CarTicket carTicket) {
-        FetchCarInfo fetchCarInfo;
-        Car car = null;
-        String tickeMessage = null;
-        for (ParkingLot parkingLot : parkingLots) {
-            Car temp = parkingLot.fetch(carTicket);
-            if (temp != null) {
-                car = temp;
-            }
-        }
-        fetchCarInfo = new FetchCarInfo(car, tickeMessage);
-        return fetchCarInfo;
-    }
 }
