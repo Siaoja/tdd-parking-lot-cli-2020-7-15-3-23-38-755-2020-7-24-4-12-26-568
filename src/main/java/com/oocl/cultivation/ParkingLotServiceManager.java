@@ -47,6 +47,16 @@ public class ParkingLotServiceManager {
     }
 
     public FetchCarInfo fetchCar(CarTicket carTicket) {
-        return null;
+        FetchCarInfo fetchCarInfo;
+        Car car = null;
+        String tickeMessage = null;
+        for (ParkingLot parkingLot : parkingLots) {
+            Car temp = parkingLot.fetch(carTicket);
+            if (temp != null) {
+                car = temp;
+            }
+        }
+        fetchCarInfo = new FetchCarInfo(car, tickeMessage);
+        return fetchCarInfo;
     }
 }

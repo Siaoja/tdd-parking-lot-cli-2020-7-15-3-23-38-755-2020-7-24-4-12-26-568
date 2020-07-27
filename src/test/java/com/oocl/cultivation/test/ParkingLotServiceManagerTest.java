@@ -92,4 +92,25 @@ public class ParkingLotServiceManagerTest {
         assertNotNull(parkCarInfo.getCarTicket());
         assertEquals(car, fetchCarInfo.getCar());
     }
+
+    @Test
+    void should_given_many_car_when_arrange_parkingBoy_park_then_return_correspond_message() {
+        //given
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
+        parkingLotServiceManager.arrangeManager(parkingBoy);
+
+        //when
+        int parkingBoyIndex = 0;
+        ParkCarInfo parkCarInfo = null;
+        for(int i = 0; i < 11; i++){
+            parkCarInfo = parkingLotServiceManager.arrangePark(parkingBoyIndex,new Car());
+        }
+
+        //then
+        assertNotNull(parkCarInfo);
+        assertEquals("Not enough position.",parkCarInfo.getParkMessage());
+    }
 }
