@@ -41,7 +41,7 @@ public class ParkingBoy {
     }
 
     private String queryTicket(CarTicket carTicke) {
-        String ticketMessage = "";
+        String ticketMessage = null;
         if (carTicke == null) {
             ticketMessage = "Please provide your parking ticket.";
         } else {
