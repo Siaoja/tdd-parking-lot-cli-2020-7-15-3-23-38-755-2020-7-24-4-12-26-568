@@ -27,35 +27,24 @@ public class ParkingBoy {
         FetchCarInfo fetchCarInfo;
         Car car = null;
         String ticketMessage = null;
-
-        for (ParkingLot parkingLot : parkingLots) {
-            Car fetchCar = parkingLot.fetch(carTicket);
-            if (fetchCar != null) {
-                car = fetchCar;
+        if(carTicket == null){
+            ticketMessage = "Please provide your parking ticket.";
+        }else{
+            for (ParkingLot parkingLot : parkingLots) {
+                Car fetchCar = parkingLot.fetch(carTicket);
+                if (fetchCar != null) {
+                    car = fetchCar;
+                }
+            }
+            if (car == null) {
+                ticketMessage = "Unrecognized parking ticket.";
             }
         }
-        if (car == null) {
-            ticketMessage = queryTicket(carTicket);
-        }
+
         fetchCarInfo = new FetchCarInfo(car, ticketMessage);
         return fetchCarInfo;
     }
 
-    private String queryTicket(CarTicket carTicket) {
-        String ticketMessage = null;
-        if(carTicket == null){
-            ticketMessage = "Please provide your parking ticket.";
-        }else {
-            for (ParkingLot parkingLot : parkingLots) {
-                if (parkingLot.isRightTicket(carTicket)) {
-                    ticketMessage = "";
-                    break;
-                }
-                ticketMessage = "Unrecognized parking ticket.";
-            }
-        }
-        return ticketMessage;
-    }
 
     public List<ParkingLot> getParkingLots() {
         return parkingLots;
