@@ -56,4 +56,23 @@ public class ParkingLotServiceManagerTest {
         assertNotNull(parkCarInfo.getCarTicket());
         assertEquals(1,parkingLotServiceManager.getManagerList().get(1).getParkingLots().get(0).getTicketCarMap().size());
     }
+
+    @Test
+    void should_given_car_when_manager_park_then_return_ticket() {
+        //given
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        for(int i = 0; i < 3; i++){
+            parkingLots.add(new ParkingLot());
+        }
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
+        Car car = new Car();
+
+        //when
+        ParkCarInfo parkCarInfo = parkingLotServiceManager.parkCar(car);
+        FetchCarInfo fetchCarInfo = parkingLotServiceManager.fetchCar(parkCarInfo.getCarTicket());
+
+        //then
+        assertNotNull(parkCarInfo.getCarTicket());
+        assertEquals(car, fetchCarInfo.getCar());
+    }
 }
